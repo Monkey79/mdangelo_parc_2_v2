@@ -150,7 +150,6 @@ int as_deleteArcade(LinkedList** arcadesLList,LinkedList** gamesLList){
 		if(success==0){
 			printf("--eliminacion exitosa--\n");
 			ar_saveArcade(*arcadesLList, ARCADE_FILE);
-			//_writeArcadesFile(*arcadesLList, ARCADE_FILE);
 		}
 	}else{
 		printf("-eliminacion cancelada-\n");
@@ -188,7 +187,8 @@ void as_createMultiPlayerFile(LinkedList** arcadesLList){
 	if(*arcadesLList!=NULL){
 		ll_filter(cloneArcLList, _hasTheArcadeMoreThanNPlayer); //filtro lista previamente clonada
 		as_printAllArcades(cloneArcLList);
-		_writeArcadesFile(cloneArcLList, ARCADE_MP_FILE);
+		//_writeArcadesFile(cloneArcLList, ARCADE_MP_FILE);
+		ar_saveArcade(*arcadesLList, ARCADE_MP_FILE);
 	}else{
 		printf("-no puedo generar nada desde una lista vacia o nula-\n");
 	}
@@ -202,7 +202,8 @@ void as_upgradeCoinsCapacity(LinkedList** arcadesLList){
 	if(qst=='S'){
 		ll_map(*arcadesLList, _upgradeCoinsCapacity);
 		as_printAllArcades(*arcadesLList);
-		_writeArcadesFile(*arcadesLList, ARCADE_FILE); //actualizo el archivo arcades.csv
+		//_writeArcadesFile(*arcadesLList, ARCADE_FILE); //actualizo el archivo arcades.csv
+		ar_saveArcade(*arcadesLList, ARCADE_FILE);
 	}else{
 		printf("--Actualizacion fichas CANCELADA--\n");
 	}
